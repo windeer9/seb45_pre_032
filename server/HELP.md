@@ -9,6 +9,7 @@ For further reference, please consider the following sections:
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.14/reference/htmlsinge/index.html#web)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.14/reference/htmlsinge/index.html#data.sql.jpa-and-spring-data)
 * [Spring Security](https://docs.spring.io/spring-boot/docs/2.7.14/reference/htmlsinge/index.html#web.security)
+* [OAuth2 Client](https://docs.spring.io/spring-boot/docs/2.7.14/reference/htmlsinge/index.html#web.security.oauth2.client)
 
 ### Guides
 The following guides illustrate how to use some features concretely:
