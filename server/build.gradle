@@ -4,7 +4,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
-group = 'com.rainbow'
+group = 'com'
 version = '0.0.1-SNAPSHOT'
 
 java {
@@ -36,12 +36,10 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.5.3'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
-	implementation 'org.mybatis.generator:mybatis-generator-core:1.4.0'
-	implementation 'org.mybatis:mybatis:3.5.8'
+//	implementation 'org.mybatis.generator:mybatis-generator-core:1.4.0'
+//	implementation 'org.mybatis:mybatis:3.x.x'
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
-	implementation 'com.google.code.gson:gson:2.8.8'
-	implementation 'com.h2database:h2:2.2.220'
 }
 
 tasks.named('test') {
