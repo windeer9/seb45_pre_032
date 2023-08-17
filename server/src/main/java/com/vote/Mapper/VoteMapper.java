@@ -1,7 +1,7 @@
-package com.vote;
+package com.vote.Mapper;
 
-import com.comment.Comment;
-import com.comment.CommentDto;
+import com.vote.DTO.VoteDto;
+import com.vote.Entity.Vote;
 import org.mapstruct.Mapper;
 
 @Mapper

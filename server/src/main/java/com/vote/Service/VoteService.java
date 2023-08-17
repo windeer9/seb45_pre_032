@@ -1,11 +1,11 @@
-package com.vote;
+package com.vote.Service;
 
-import com.comment.BusinessLogicException;
-import com.comment.Comment;
-import com.comment.ExceptionCode;
+import com.Exception.BusinessLogicException;
+import com.Exception.ExceptionCode;
+import com.vote.Entity.Vote;
+import com.vote.Repository.VoteRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service

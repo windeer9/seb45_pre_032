@@ -1,5 +1,6 @@
-package com.comment;
+package com.comment.Repository;
 
+import com.comment.Entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,5 +1,9 @@
 package com.vote;
 
+import com.vote.DTO.VoteDto;
+import com.vote.Entity.Vote;
+import com.vote.Mapper.VoteMapper;
+
 import javax.annotation.processing.Generated;
 
 @Generated(

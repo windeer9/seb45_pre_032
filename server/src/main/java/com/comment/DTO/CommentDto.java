@@ -1,4 +1,4 @@
-package com.comment;
+package com.comment.DTO;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;

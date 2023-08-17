@@ -1,4 +1,4 @@
-package com.vote;
+package com.vote.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

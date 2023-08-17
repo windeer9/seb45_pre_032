@@ -1,5 +1,10 @@
-package com.comment;
+package com.comment.Controller;
 
+import com.comment.Entity.Comment;
+import com.comment.DTO.CommentDto;
+import com.comment.Mapper.CommentMapper;
+import com.comment.Service.CommentService;
+import com.member.Service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -8,18 +13,26 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 
-@RequestMapping("/answer_comment")
+import com.Exception.ExceptionCode;
+import com.Exception.BusinessLogicException;
+
+// API요청을 받고 처리하는 컨트롤러, POST/PATCH/DELETE 요청을 처리한다.
 @RestController
+@RequestMapping("/question_comment")
 @Validated
-public class AnswerCommentController {
-    private final static String QUESTION_COMMENT_URL = "/answer_comment";
+public class QuestionCommentController {
+    private final static String QUESTION_COMMENT_URL = "/question_comment";
     private final CommentService commentService;
     private final CommentMapper mapper;
 
-    public AnswerCommentController(CommentService commentService,
-                                     CommentMapper mapper){
+    private final MemberService  memberService;
+
+    public QuestionCommentController(CommentService commentService,
+                                     CommentMapper mapper,
+                                     MemberService memberService){
         this.commentService = commentService;
         this.mapper = mapper;
+        this.memberService = memberService;
     }
 
 
@@ -34,7 +47,8 @@ public class AnswerCommentController {
     public ResponseEntity patchQuestionComment(@PathVariable("members_id") @Positive long memberId,
                                                @PathVariable("comment_id") @Positive long commentId,
                                                @Valid @RequestBody CommentDto.Patch patch){
-        // member 검증 로직 필요(Member쪽 로직 가져다쓸겁니다.)
+
+        findVerifiedCommentMember(memberId, commentId);
         patch.addCommentId(commentId);
         Comment updateComment = commentService.updateComment(mapper.commentPatchDtoToComment(patch));
 
@@ -42,10 +56,18 @@ public class AnswerCommentController {
     }
 
     @DeleteMapping("/{members_id}/{comment_id}")
-    public void deleteQuestionComment(@PathVariable("member_id") @Positive long membersId,
+    public String deleteQuestionComment(@PathVariable("member_id") @Positive long memberId,
                                       @PathVariable("comment_id") @Positive long commentId){
-        // member 검증 로직 필요(Member쪽 로직 가져다쓸겁니다.)
+        findVerifiedCommentMember(memberId, commentId);
         commentService.deleteComment(commentId);
+        return "Commnet Delete successfully";
+    }
+
+    private void findVerifiedCommentMember(long memberId, long commentId){
+
+        memberService.findVerifiedMember(memberId);
+        long memberCheckId = commentService.findVerifiedComment(commentId).getMember().getMemberId();
+        if(memberCheckId != memberId ) throw new BusinessLogicException(ExceptionCode.MEMBER_FORBIDDEN);
     }
 
 }

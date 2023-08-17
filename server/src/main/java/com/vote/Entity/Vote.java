@@ -1,10 +1,11 @@
-package com.vote;
+package com.vote.Entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,7 +18,9 @@ public class Vote {
     private String voteType;
     private long voteCount;
 
-    private long memberId;
+    @OneToMany(mappedBy = "vote_id", cascade = CascadeType.PERSIST)
+    private List<VoteMember> voteMember;
+
 
 //    @OneToOne
 //    private Question question;

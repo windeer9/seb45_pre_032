@@ -1,10 +1,9 @@
-package com.comment;
+package com.comment.Entity;
 
+import com.member.Entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-//import com.question.Question;
-//import com.member.Member;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -23,13 +22,13 @@ public class Comment {
     private LocalDateTime createdAt;
 
     private LocalDateTime modifiedAt;
-//    @ManyToOne
-//    @JoinColumn(name = "MEMBERS_ID")
-//    private Member memberId;
-//
-//    public void addMember(Member member){
-//        this.memberId = member;
-//    }
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    public void addMember(Member member){
+        this.member = member;
+    }
 //
 //    @ManyToOne
 //    @JoinColumn(name = "QUESTION_ID")

@@ -1,10 +1,9 @@
-package com.comment;
+package com.comment.Mapper;
 
+import com.comment.DTO.CommentDto;
+import com.comment.Entity.Comment;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Mapper
 @Component

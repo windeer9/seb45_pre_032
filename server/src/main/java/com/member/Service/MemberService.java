@@ -2,8 +2,8 @@ package com.member.Service;
 
 
 import com.member.Entity.Member;
-import com.member.Exception.BusinessLogicException;
-import com.member.Exception.ExceptionCode;
+import com.Exception.BusinessLogicException;
+import com.Exception.ExceptionCode;
 import com.member.Repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
