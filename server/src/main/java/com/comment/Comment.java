@@ -23,17 +23,15 @@ public class Comment {
     private LocalDateTime createdAt;
 
     private LocalDateTime modifiedAt;
-//    @OneToOne
+//    @ManyToOne
 //    @JoinColumn(name = "MEMBERS_ID")
-//    private Member member;
+//    private Member memberId;
 //
 //    public void addMember(Member member){
-//        this.member = member;
+//        this.memberId = member;
 //    }
 //
 //    @ManyToOne
 //    @JoinColumn(name = "QUESTION_ID")
-//    private Question question;
-//
-//    public void addQuestion(Question question){this.question = question};
+//    private Question questionId;
 }
