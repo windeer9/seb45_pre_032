@@ -23,10 +23,8 @@ public class QuestionVoteController {
 
        voteService.createdVote();
 
-       return ResponseEntity( ,HttpStatus.CREATED);
+       return ResponseEntity( ,HttpStatus.CREATED);;
     }
-
-
 
 
 }
