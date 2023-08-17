@@ -3,6 +3,7 @@ package com.vote;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 public class VoteDto {
 
@@ -13,10 +14,16 @@ public class VoteDto {
         private long voteCount;
     }
     @Getter
+    @Setter
     public static class Patch{
         private long voteId;
         private String voteType;
         private long voteCount;
+
+        public void addVoteId(long voteId){
+            this.voteId = voteId;
+        }
+
     }
 
     @Getter

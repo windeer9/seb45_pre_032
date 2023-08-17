@@ -3,12 +3,10 @@ package com.vote;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 
 @RestController
 @RequestMapping("/question_vote")
@@ -19,13 +17,28 @@ public class QuestionVoteController {
 
 
     @PostMapping("/")
-    public ResponseEntity postVote(){
+    public ResponseEntity postQuestionVote(){
 
-       voteService.createdVote();
+      Vote createdVote = voteService.createdVote();
 
-       return ResponseEntity( ,HttpStatus.CREATED);
+       return new ResponseEntity(createdVote ,HttpStatus.CREATED);
     }
 
+    @PatchMapping("/{member_id}/{vote_id}")
+    public ResponseEntity patchQuestionVote(@PathVariable("member_id") @Positive long memberId,
+                                    @PathVariable("vote_id") @Positive long voteId,
+                                    @RequestBody VoteDto.Patch vote){
+        vote.addVoteId(voteId);
+        Vote updatedVote = voteService.updateVote(mapper.votePatchDtoToVote(vote));
+        return new ResponseEntity(mapper.voteToVoteResponseDto(updatedVote), HttpStatus.OK);
+    }
+
+    @GetMapping("/{vote_id}")
+    public ResponseEntity findQuestionVote(@PathVariable("vote_id") @Positive long voteId){
+       Vote findVote = voteService.findVoteCount(voteId);
+
+       return new ResponseEntity(mapper.voteToVoteResponseDto(findVote), HttpStatus.OK);
+    }
 
 
 

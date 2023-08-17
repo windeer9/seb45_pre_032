@@ -13,9 +13,9 @@ public class VoteService {
 
     private VoteRepository voteRepository;
 
-    public void createdVote(){
+    public Vote createdVote(){
         Vote createdVote = new Vote();
-        voteRepository.save(createdVote);
+        return voteRepository.save(createdVote);
     }
 
     public Vote updateVote(Vote vote){

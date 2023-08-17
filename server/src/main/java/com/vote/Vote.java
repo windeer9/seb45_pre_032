@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -17,8 +14,14 @@ public class Vote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long voteId;
-    private long memberId;
     private String voteType;
     private long voteCount;
 
+    private long memberId;
+
+//    @OneToOne
+//    private Question question;
+//
+//    @OneToOne
+//    private Answer answer;
 }
